@@ -1,14 +1,26 @@
-# docker7bday-demo
- Docker’s 7th Bday: #myDockerBday Celebration
+# Docker 7th Birthday Demo (Blazor + RabbitMQ on Docker)
+ 
+## Install Docker
 
-Install Docker
+> Windows
+* https://docs.docker.com/docker-for-windows/install/
 
-Install VS 2019
+> Linux
+* https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
-Install RabbitMq Docker
+> Mac
+* https://docs.docker.com/docker-for-mac/install/
 
-Create Sample App
+## Install VS 2019 
+> Windows & Mac
+* https://visualstudio.microsoft.com/downloads/
+* Download Visual Studio Code if using Linux 
+   - (some extra configuration might be necessarry for a full debugging experience - Google & StackOverflow are your friends)
 
-Deploy to docker container
+## Install RabbitMq Docker
 
-Test
+## Create Sample App
+
+## Deploy to docker container
+
+## Test
