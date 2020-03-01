@@ -1,0 +1,5 @@
+﻿<linker>
+  <assembly fullname="docker7bday-demo">
+    <type fullname="*" required="true" />
+  </assembly>
+</linker>

@@ -44,8 +44,12 @@
 ![alt text](demo-images/dotnet-new.png "dotnet new")
 * Next execute _dotnet new --update-check_ to check for template updates and run the command it provides if updates are available.
 ![alt text](demo-images/dotnet-updatecheck.png "dotnet new --update-check")
-* Scroll through the list to see if you find the template named "blazor". If you don't find the blazor template installed run the following command to install the Blazor templates  _dotnet new -i Microsoft.AspNetCore.Blazor.Templates::*_
-
+* Scroll through the list to see if you find the template named "blazorwasm". If you don't find the _blazorwasm_ template installed run the following command to install the Blazor templates  _dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1_
+* Execute _dotnet new_ again to see a list of installed template and verify the blazor template is now instaled.
+* Type _dotnet new blazorwasm_ in the project folder your created and you should see the following output.
+![alt text](demo-images/dotnet-new-blazor.png "dotnet new blazor")  
+## Verfiy the app runs locall
+To verify the app template you just installed runs. From the project folder using a commandline or terminal type _dotnet run_ and press enter.
 ## Deploy to docker container
 
 ## Test
