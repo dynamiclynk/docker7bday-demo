@@ -48,7 +48,7 @@
 * Execute _dotnet new_ again to see a list of installed template and verify the blazor template is now instaled.
 * Type _dotnet new blazorwasm_ in the project folder your created and you should see the following output.
 ![alt text](demo-images/dotnet-new-blazor.png "dotnet new blazor")  
-## Verfiy the app runs locall
+## Verfiy the app runs locally
 To verify the app template you just installed runs. From the project folder using a commandline or terminal and type _dotnet build_ and press enter to ensure the newly created project builds without an errors.
 ![alt text](demo-images/dotnet-build.png "dotnet build")
 
@@ -66,6 +66,8 @@ Once you browse to the URL you should see a webpage similiar to below from blazo
 Congrats! You have created the blazor application, next we add our RabbitMQ messaging functionality.
 
 ![alt text](demo-images/yay.png "Yay!")
+
+## Add messaging to our Blazor application
 
 ## Deploy to docker container
 
