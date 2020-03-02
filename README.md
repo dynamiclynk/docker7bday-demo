@@ -18,8 +18,8 @@
 * Download Visual Studio Code (same link as above)
    - (some extra configuration might be necessarry for a full debugging experience - Google & StackOverflow are your friends)
 * Download the .NetCore 3.1.x SDK if it is not included in your VS 2019 install.
-  * You can check what .NetCore versions are installed via this command from your command prompt or terminal _dotnet --list-sdks_
-   * ![alt text](demo-images/dotnet-versions.png "dotnet versions")
+* You can verify what .NetCore versions are installed via this command from your command prompt or terminal _dotnet --list-sdks_
+![alt text](demo-images/dotnet-versions.png "dotnet versions")
 
 ## Install RabbitMq Docker
 > More info https://www.rabbitmq.com/
@@ -32,7 +32,7 @@
    * Run the container with the following command _docker run --name my-rabbit --hostname my-rabbit -p 8080:15672 -d rabbitmq:3-management_ which indicates to run this container using the specifed host name and map the host port 8080 to the container rabbitMq port 15672. 
    * _-d_ Indicates to run the container in detached mode which means we started the container and returned to the host command prompt.
    * If you browse to http://localhost:8080 you should see the RabbitMq managment page. The default user name is _guest_ and the password is _guest_.
-   * ![alt text](demo-images/rabbitmq.png "RabbitMq")
+![alt text](demo-images/rabbitmq.png "RabbitMq")
    * Congrats you have successfuly deployed the RabbitMq docker container.
 
 ## Create Sample App
@@ -52,7 +52,8 @@
 To verify the app template you just installed runs. From the project folder using a commandline or terminal and type _dotnet build_ and press enter to ensure the newly created project builds without an errors.
 ![alt text](demo-images/dotnet-build.png "dotnet build")
 
-If the application built successfuly next we can try running the application by typing _dotnet run_ from the commandline or terminal. If sucessful you should see output like below.
+If the application built successfuly we can try running the application by typing _dotnet run_ from the commandline or terminal. If successful you should see output like below.
+
 ![alt text](demo-images/dotnet-run.png "dotnet run")
 
 Your browser should have openened automatically to the http address shown above, if not enter the http address shown. For me it was http://localhost:5000
@@ -64,11 +65,7 @@ Once you browse to the URL you should see a webpage similiar to below from blazo
 
 Congrats! You have created the blazor application, next we add our RabbitMQ messaging functionality.
 
-<center>
-
 ![alt text](demo-images/yay.png "Yay!")
-
-</center>
 
 ## Deploy to docker container
 
