@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\users\\corey\\code\\docker7bday-demo\\docker7bday-demo.csproj": {}
+    "C:\\Users\\corey\\code\\docker7bday-demo\\docker7bday-demo.csproj": {}
   },
   "projects": {
-    "C:\\users\\corey\\code\\docker7bday-demo\\docker7bday-demo.csproj": {
+    "C:\\Users\\corey\\code\\docker7bday-demo\\docker7bday-demo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\users\\corey\\code\\docker7bday-demo\\docker7bday-demo.csproj",
+        "projectUniqueName": "C:\\Users\\corey\\code\\docker7bday-demo\\docker7bday-demo.csproj",
         "projectName": "docker7bday-demo",
-        "projectPath": "C:\\users\\corey\\code\\docker7bday-demo\\docker7bday-demo.csproj",
+        "projectPath": "C:\\Users\\corey\\code\\docker7bday-demo\\docker7bday-demo.csproj",
         "packagesPath": "C:\\Users\\corey\\.nuget\\packages\\",
-        "outputPath": "C:\\users\\corey\\code\\docker7bday-demo\\obj\\",
+        "outputPath": "C:\\Users\\corey\\code\\docker7bday-demo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

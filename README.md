@@ -49,7 +49,27 @@
 * Type _dotnet new blazorwasm_ in the project folder your created and you should see the following output.
 ![alt text](demo-images/dotnet-new-blazor.png "dotnet new blazor")  
 ## Verfiy the app runs locall
-To verify the app template you just installed runs. From the project folder using a commandline or terminal type _dotnet run_ and press enter.
+To verify the app template you just installed runs. From the project folder using a commandline or terminal and type _dotnet build_ and press enter to ensure the newly created project builds without an errors.
+![alt text](demo-images/dotnet-build.png "dotnet build")
+
+If the application built successfuly next we can try running the application by typing _dotnet run_ from the commandline or terminal. If sucessful you should see output like below.
+![alt text](demo-images/dotnet-run.png "dotnet run")
+
+Your browser should have openened automatically to the http address shown above, if not enter the http address shown. For me it was http://localhost:5000
+
+Once you browse to the URL you should see a webpage similiar to below from blazor app.
+
+![alt text](demo-images/blazor-app.png "Blazor wasm app")
+
+
+Congrats! You have created the blazor application, next we add our RabbitMQ messaging functionality.
+
+<center>
+
+![alt text](demo-images/yay.png "Yay!")
+
+</center>
+
 ## Deploy to docker container
 
 ## Test
