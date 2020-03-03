@@ -9,197 +9,80 @@
     "TagHelpers": [
       {
         "Kind": "Components.Component",
-        "Name": "docker7bday_demo.Pages.Index",
+        "Name": "docker7bday_demo.Shared.SurveyPrompt",
         "AssemblyName": "docker7bday-demo",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Index",
+            "TagName": "SurveyPrompt",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
             "Diagnostics": []
           }
         ],
-        "BoundAttributes": [],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "IsEnum": false,
+            "IndexerNamePrefix": null,
+            "IndexerTypeName": null,
+            "Documentation": null,
+            "Diagnostics": [],
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            },
+            "BoundAttributeParameters": []
+          }
+        ],
         "AllowedChildTags": [],
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.Pages.Index"
+          "Common.TypeName": "docker7bday_demo.Shared.SurveyPrompt"
         }
       },
       {
         "Kind": "Components.Component",
-        "Name": "docker7bday_demo.Pages.Index",
+        "Name": "docker7bday_demo.Shared.SurveyPrompt",
         "AssemblyName": "docker7bday-demo",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "docker7bday_demo.Pages.Index",
+            "TagName": "docker7bday_demo.Shared.SurveyPrompt",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
             "Diagnostics": []
           }
         ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "docker7bday_demo.Pages.Counter",
-        "AssemblyName": "docker7bday-demo",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
+        "BoundAttributes": [
           {
-            "TagName": "Counter",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "IsEnum": false,
+            "IndexerNamePrefix": null,
+            "IndexerTypeName": null,
+            "Documentation": null,
+            "Diagnostics": [],
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            },
+            "BoundAttributeParameters": []
           }
         ],
-        "BoundAttributes": [],
         "AllowedChildTags": [],
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.Pages.Counter"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "docker7bday_demo.Pages.Counter",
-        "AssemblyName": "docker7bday-demo",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "docker7bday_demo.Pages.Counter",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "docker7bday_demo.Pages.FetchData",
-        "AssemblyName": "docker7bday-demo",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.Pages.FetchData"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "docker7bday_demo.Pages.FetchData",
-        "AssemblyName": "docker7bday-demo",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "docker7bday_demo.Pages.FetchData",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.Pages.FetchData",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "docker7bday_demo.App",
-        "AssemblyName": "docker7bday-demo",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.App"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "docker7bday_demo.App",
-        "AssemblyName": "docker7bday-demo",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "docker7bday_demo.App",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.App",
+          "Common.TypeName": "docker7bday_demo.Shared.SurveyPrompt",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -337,85 +220,6 @@
       },
       {
         "Kind": "Components.Component",
-        "Name": "docker7bday_demo.Shared.SurveyPrompt",
-        "AssemblyName": "docker7bday-demo",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SurveyPrompt",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "IsEnum": false,
-            "IndexerNamePrefix": null,
-            "IndexerTypeName": null,
-            "Documentation": null,
-            "Diagnostics": [],
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            },
-            "BoundAttributeParameters": []
-          }
-        ],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.Shared.SurveyPrompt"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "docker7bday_demo.Shared.SurveyPrompt",
-        "AssemblyName": "docker7bday-demo",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "docker7bday_demo.Shared.SurveyPrompt",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "IsEnum": false,
-            "IndexerNamePrefix": null,
-            "IndexerTypeName": null,
-            "Documentation": null,
-            "Diagnostics": [],
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            },
-            "BoundAttributeParameters": []
-          }
-        ],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "docker7bday_demo.Shared.SurveyPrompt",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "Kind": "Components.Component",
         "Name": "docker7bday_demo.Shared.NavMenu",
         "AssemblyName": "docker7bday-demo",
         "Documentation": null,
@@ -465,9 +269,254 @@
       },
       {
         "Kind": "Components.Component",
+        "Name": "docker7bday_demo.App",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.App"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "docker7bday_demo.App",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "docker7bday_demo.App",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "docker7bday_demo.Pages.FetchData",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "FetchData",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.Pages.FetchData"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "docker7bday_demo.Pages.FetchData",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "docker7bday_demo.Pages.FetchData",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.Pages.FetchData",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "docker7bday_demo.Pages.Counter",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Counter",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.Pages.Counter"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "docker7bday_demo.Pages.Counter",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "docker7bday_demo.Pages.Counter",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.Pages.Counter",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "docker7bday_demo.Pages.Index",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.Pages.Index"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "docker7bday_demo.Pages.Index",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "docker7bday_demo.Pages.Index",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "docker7bday_demo.Pages.Messaging",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Messaging",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.Pages.Messaging"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "docker7bday_demo.Pages.Messaging",
+        "AssemblyName": "docker7bday-demo",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "docker7bday_demo.Pages.Messaging",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "docker7bday_demo.Pages.Messaging",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
-        "Documentation": null,
+        "Documentation": "\n            <summary>\n            A component that provides a cascading value to all descendant components.\n            </summary>\n        ",
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -566,7 +615,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
-        "Documentation": null,
+        "Documentation": "\n            <summary>\n            A component that provides a cascading value to all descendant components.\n            </summary>\n        ",
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1311,7 +1360,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
-        "Documentation": null,
+        "Documentation": "\n            <summary>\n            Adds Data Annotations validation support to an <see cref=\"T:Microsoft.AspNetCore.Components.Forms.EditContext\" />.\n            </summary>\n        ",
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1335,7 +1384,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
-        "Documentation": null,
+        "Documentation": "\n            <summary>\n            Adds Data Annotations validation support to an <see cref=\"T:Microsoft.AspNetCore.Components.Forms.EditContext\" />.\n            </summary>\n        ",
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1360,7 +1409,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": null,
+        "Documentation": "\n            <summary>\n            Renders a form element that cascades an <see cref=\"P:Microsoft.AspNetCore.Components.Forms.EditForm.EditContext\" /> to descendants.\n            </summary>\n        ",
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1501,7 +1550,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": null,
+        "Documentation": "\n            <summary>\n            Renders a form element that cascades an <see cref=\"P:Microsoft.AspNetCore.Components.Forms.EditForm.EditContext\" /> to descendants.\n            </summary>\n        ",
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -16538,6 +16587,11 @@
     {
       "FilePath": "c:\\Users\\corey\\code\\docker7bday-demo\\Pages\\FetchData.razor",
       "TargetPath": "Pages\\FetchData.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\corey\\code\\docker7bday-demo\\Pages\\Messaging.razor",
+      "TargetPath": "Pages\\Messaging.razor",
       "FileKind": "component"
     },
     {

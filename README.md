@@ -68,6 +68,51 @@ Congrats! You have created the blazor application, next we add our RabbitMQ mess
 ![alt text](demo-images/yay.png "Yay!")
 
 ## Add messaging to our Blazor application
+### First make sure your RabbitMQ container is still up and running by executing the following command
+
+    docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.RunningFor}}\t{{.Status}}"
+
+You can execute the standard _docker ps -a_ but the above command will format the output in a more readable format as seen below.
+
+![alt text](demo-images/docker-ps-a.png "docker ps -a -f")
+
+The _-a_ flag indicates we want to view all containers running or not, and as you can see our container is not running because I had to reboot my laptop. 
+
+So lets start the rabbit mq container with the _docker start_ command.
+
+    docker start my-rabbit
+
+![alt text](demo-images/docker-start.png "docker start")
+
+The above command starts our container by name you can also specify the conatiner id in my case it would have been _ce4fa492fb4b_.
+
+Browse to http://localhost:8080/#/ to make sure you can access the rabbitMq management dashboard.
+
+### Add a new nav item
+Open the _Shared/NavMenu.razor_ file .razor files are specific to Blazor and are similiar to .cshtml Razor files but with support for Web Assembly by responding as a SPA instead of POST backs.
+
+Add this razor code to the file after the _fetchdata_ `</li>`.
+
+    <li class="nav-item px-3">
+         <NavLink class="nav-link" href="messaging">
+           <span class="oi oi-comment-square" aria-hidden="true"></span> Messaging
+         </NavLink>
+    </li>
+
+Lets run the application to make sure our application navigation menu looks correct. 
+
+Also lets run the application so it will detect changes when we write code so we don't have to stop and re-run the application each time.
+
+To do this from the commandline or terminal type the below from your application root directory.
+
+    dotnet watch run
+
+You should see the following output. To verify all is well browse to your application in my case it is http://localhost:5000
+
+![alt text](demo-images/dotnet-watch-run.png "dotnet watch run")
+
+Yep the new menu is now available so now lets write the messaging code.
+![alt text](demo-images/blazor-new-nav.png "New nav menu item")
 
 ## Deploy to docker container
 

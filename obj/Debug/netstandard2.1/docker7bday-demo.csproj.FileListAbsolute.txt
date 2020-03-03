@@ -87,3 +87,5 @@ C:\users\corey\code\docker7bday-demo\obj\Debug\netstandard2.1\docker7bday-demo.p
 C:\users\corey\code\docker7bday-demo\obj\Debug\netstandard2.1\blazor\linker.descriptor.xml
 C:\users\corey\code\docker7bday-demo\obj\Debug\netstandard2.1\blazor\linker.typegranularityconfig.xml
 C:\users\corey\code\docker7bday-demo\obj\Debug\netstandard2.1\blazor\blazor.boot.json
+C:\users\corey\code\docker7bday-demo\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Messaging.razor.g.cs
+C:\users\corey\code\docker7bday-demo\obj\Debug\netstandard2.1\Razor\Pages\Messaging.razor.g.cs
