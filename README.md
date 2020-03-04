@@ -48,6 +48,7 @@
 * Execute _dotnet new_ again to see a list of installed template and verify the blazor template is now instaled.
 * Type _dotnet new blazorwasm_ in the project folder your created and you should see the following output.
 ![alt text](demo-images/dotnet-new-blazor.png "dotnet new blazor")  
+
 ## Verfiy the app runs locally
 To verify the app template you just installed runs. From the project folder using a commandline or terminal and type _dotnet build_ and press enter to ensure the newly created project builds without an errors.
 ![alt text](demo-images/dotnet-build.png "dotnet build")
@@ -113,6 +114,8 @@ You should see the following output. To verify all is well browse to your applic
 
 Yep the new menu is now available so now lets write the messaging code.
 ![alt text](demo-images/blazor-new-nav.png "New nav menu item")
+
+Create a new Blazor Page under /Pages in your solution and name it _Messaging.razor_
 
 ## Deploy to docker container
 
