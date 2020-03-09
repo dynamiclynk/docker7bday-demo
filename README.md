@@ -3,26 +3,34 @@
 ## Install Docker
 
 > Windows
-* https://docs.docker.com/docker-for-windows/install/
+
+* [Docker for Windows](https://docs.docker.com/docker-for-windows/install/)
 
 > Linux
-* https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+* [Docker for Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
 > Mac
-* https://docs.docker.com/docker-for-mac/install/
 
-## Install VS 2019 
+* [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+
+## Install VS 2019
+
 > Windows & Mac
-* https://visualstudio.microsoft.com/downloads/
+
+* [Visual Studio Downloads](https://visualstudio.microsoft.com/downloads/)
+
 > Linux
+
 * Download Visual Studio Code (same link as above)
-   - (some extra configuration might be necessarry for a full debugging experience - Google & StackOverflow are your friends)
+  * (some extra configuration might be necessarry for a full debugging experience - Google & StackOverflow are your friends)
 * Download the .NetCore 3.1.x SDK if it is not included in your VS 2019 install.
 * You can verify what .NetCore versions are installed via this command from your command prompt or terminal _dotnet --list-sdks_
 ![alt text](demo-images/dotnet-versions.png "dotnet versions")
 
 ## Install RabbitMq Docker
-> More info https://www.rabbitmq.com/
+
+> [More info](https://www.rabbitmq.com/)
 
 > RabbitMQ is lightweight and easy to deploy on premises and in the cloud. It supports multiple messaging protocols. RabbitMQ can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements.
 
@@ -33,13 +41,14 @@
    * _-d_ Indicates to run the container in detached mode which means we started the container and returned to the host command prompt.
    * If you browse to http://localhost:8080 you should see the RabbitMq managment page. The default user name is _guest_ and the password is _guest_.
 ![alt text](demo-images/rabbitmq.png "RabbitMq")
-   * Congrats you have successfuly deployed the RabbitMq docker container.
+  * Congrats you have successfuly deployed the RabbitMq docker container.
 
 ## Create Sample App
+
 * Create a folder to store your application and Dockfile with in _ex. C:\code\blazor-doker-demo\)_
 ![alt text](demo-images/new-folder.png "New folder")
 * From the command line or terminal run the following commands in the above created folder that will contain your project and Dockerfile _ex. (C:\code\blazor-docker-demo\\)_.
-*  You may open PowerShell or any command line terminal _I will be using PowerShell for this tutorial._
+* You may open PowerShell or any command line terminal _I will be using PowerShell for this tutorial._
 * Then execute the command _dotnet new_ to view a list of the installed templates.
 ![alt text](demo-images/dotnet-new.png "dotnet new")
 * Next execute _dotnet new --update-check_ to check for template updates and run the command it provides if updates are available.
@@ -50,6 +59,7 @@
 ![alt text](demo-images/dotnet-new-blazor.png "dotnet new blazor")  
 
 ## Verfiy the app runs locally
+
 To verify the app template you just installed runs. From the project folder using a commandline or terminal and type _dotnet build_ and press enter to ensure the newly created project builds without an errors.
 ![alt text](demo-images/dotnet-build.png "dotnet build")
 
@@ -57,18 +67,20 @@ If the application built successfuly we can try running the application by typin
 
 ![alt text](demo-images/dotnet-run.png "dotnet run")
 
-Your browser should have openened automatically to the http address shown above, if not enter the http address shown. For me it was http://localhost:5000
+Your browser should have openened automatically to the http address shown above, if not enter the http address shown. For me it was [http://localhost:5000](http://localhost:5000)
 
 Once you browse to the URL you should see a webpage similiar to below from blazor app.
 
 ![alt text](demo-images/blazor-app.png "Blazor wasm app")
 
+Alternatively you can open the .csproj with VisualStudio and launch the debugger from there which should open the browser to the same WebApp url.
 
 Congrats! You have created the blazor application, next we add our RabbitMQ messaging functionality.
 
 ![alt text](demo-images/yay.png "Yay!")
 
 ## Add messaging to our Blazor application
+
 ### First make sure your RabbitMQ container is still up and running by executing the following command
 
     docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.RunningFor}}\t{{.Status}}"
@@ -77,7 +89,7 @@ You can execute the standard _docker ps -a_ but the above command will format th
 
 ![alt text](demo-images/docker-ps-a.png "docker ps -a -f")
 
-The _-a_ flag indicates we want to view all containers running or not, and as you can see our container is not running because I had to reboot my laptop. 
+The _-a_ flag indicates we want to view all containers running or not, and as you can see our container is not running because I had to reboot my laptop.
 
 So lets start the rabbit mq container with the _docker start_ command.
 
@@ -87,9 +99,22 @@ So lets start the rabbit mq container with the _docker start_ command.
 
 The above command starts our container by name you can also specify the conatiner id in my case it would have been _ce4fa492fb4b_.
 
-Browse to http://localhost:8080/#/ to make sure you can access the rabbitMq management dashboard.
+Browse to [http://localhost:8080](http://localhost:8080) to make sure you can access the rabbitMq management dashboard.
+
+### Add the RabbitMq package reference
+
+Open our project's .csproj file with Visual Studio or VSCode then we need to add a new library\package reference to our appplication. You can do this from the commandline, csproj or the NuGet package manager.
+
+We will do it via the csproj. So in Visual Studio 2019 right-click and choose Edit Project File or in VSCode just click the csprof file to edit it. Then add `<PackageReference Include="TekHow.RabbitMq" Version="1.0.2" />` to the _ItemGroup_ like show below.
+
+![alt text](demo-images/add-reference.png "Package reference")
+
+[TekHow.RabbitMq package reference](https://github.com/dynamiclynk/TekHow.RabbitMq)
+
+### Initalize RabbitMq and inject it into our application 
 
 ### Add a new nav item
+
 Open the _Shared/NavMenu.razor_ file .razor files are specific to Blazor and are similiar to .cshtml Razor files but with support for Web Assembly by responding as a SPA instead of POST backs.
 
 Add this razor code to the file after the _fetchdata_ `</li>`.
@@ -100,7 +125,7 @@ Add this razor code to the file after the _fetchdata_ `</li>`.
          </NavLink>
     </li>
 
-Lets run the application to make sure our application navigation menu looks correct. 
+Lets run the application to make sure our application navigation menu looks correct.
 
 Also lets run the application so it will detect changes when we write code so we don't have to stop and re-run the application each time.
 
