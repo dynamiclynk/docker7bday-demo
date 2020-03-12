@@ -1,5 +1,5 @@
 # Docker 7th Birthday Demo (Blazor + RabbitMQ on Docker)
- 
+
 ## Install Docker
 
 > Windows
@@ -31,15 +31,14 @@
 ## Install RabbitMq Docker
 
 > [More info](https://www.rabbitmq.com/)
-
 > RabbitMQ is lightweight and easy to deploy on premises and in the cloud. It supports multiple messaging protocols. RabbitMQ can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements.
-
 > We will be using rabbitMq in our demo as a messaging server and client.
+
 * Pull the rabbitMq container that includes management plugin container image
-   * Use this command to pull the container _[rabbitmq:3-management](https://hub.docker.com/_/rabbitmq)_ by executing _docker pull rabbitmq:3-management_ 
-   * Run the container with the following command _docker run --name my-rabbit --hostname my-rabbit -p 8080:15672 -d rabbitmq:3-management_ which indicates to run this container using the specifed host name and map the host port 8080 to the container rabbitMq port 15672. 
-   * _-d_ Indicates to run the container in detached mode which means we started the container and returned to the host command prompt.
-   * If you browse to http://localhost:8080 you should see the RabbitMq managment page. The default user name is _guest_ and the password is _guest_.
+  * Use this command to pull the container _[rabbitmq:3-management](https://hub.docker.com/_/rabbitmq)_ by executing _docker pull rabbitmq:3-management_
+  * Run the container with the following command _docker run --name my-rabbit --hostname my-rabbit -p 8080:15672 -d rabbitmq:3-management_ which indicates to run this container using the specifed host name and map the host port 8080 to the container rabbitMq port 15672.
+  * _-d_ Indicates to run the container in detached mode which means we started the container and returned to the host command prompt.
+  * If you browse to [http://localhost:8080](http://localhost:8080) you should see the RabbitMq managment page. The default user name is _guest_ and the password is _guest_.
 ![alt text](demo-images/rabbitmq.png "RabbitMq")
   * Congrats you have successfuly deployed the RabbitMq docker container.
 
@@ -105,13 +104,13 @@ Browse to [http://localhost:8080](http://localhost:8080) to make sure you can ac
 
 Open our project's .csproj file with Visual Studio or VSCode then we need to add a new library\package reference to our appplication. You can do this from the commandline, csproj or the NuGet package manager.
 
-We will do it via the csproj. So in Visual Studio 2019 right-click and choose Edit Project File or in VSCode just click the csprof file to edit it. Then add `<PackageReference Include="TekHow.RabbitMq" Version="1.0.2" />` to the _ItemGroup_ like show below.
+We will do it via the csproj. So in Visual Studio 2019 right-click and choose Edit Project File or in VSCode just click the csprof file to edit it. Then add `<PackageReference Include="TekHow.RabbitMq" Version="<version number>" />` to the _ItemGroup_ like show below.
 
 ![alt text](demo-images/add-reference.png "Package reference")
 
 [TekHow.RabbitMq package reference](https://github.com/dynamiclynk/TekHow.RabbitMq)
 
-### Initalize RabbitMq and inject it into our application 
+### Initalize RabbitMq and inject it into our application
 
 ### Add a new nav item
 
@@ -133,7 +132,7 @@ To do this from the commandline or terminal type the below from your application
 
     dotnet watch run
 
-You should see the following output. To verify all is well browse to your application in my case it is http://localhost:5000
+You should see the following output. To verify all is well browse to your application in my case it is [http://localhost:5000](http://localhost:5000)
 
 ![alt text](demo-images/dotnet-watch-run.png "dotnet watch run")
 
