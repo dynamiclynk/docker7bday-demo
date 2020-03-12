@@ -1,4 +1,4 @@
-# Docker 7th Birthday Demo (Blazor + RabbitMQ on Docker)
+# Docker 7th Birthday Demo (Blazor + gRPC on Docker)
 
 ## Install Docker
 
@@ -28,20 +28,6 @@
 * You can verify what .NetCore versions are installed via this command from your command prompt or terminal _dotnet --list-sdks_
 ![alt text](demo-images/dotnet-versions.png "dotnet versions")
 
-## Install RabbitMq Docker
-
-> [More info](https://www.rabbitmq.com/)
-> RabbitMQ is lightweight and easy to deploy on premises and in the cloud. It supports multiple messaging protocols. RabbitMQ can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements.
-> We will be using rabbitMq in our demo as a messaging server and client.
-
-* Pull the rabbitMq container that includes management plugin container image
-  * Use this command to pull the container _[rabbitmq:3-management](https://hub.docker.com/_/rabbitmq)_ by executing _docker pull rabbitmq:3-management_
-  * Run the container with the following command _docker run --name my-rabbit --hostname my-rabbit -p 8080:15672 -d rabbitmq:3-management_ which indicates to run this container using the specifed host name and map the host port 8080 to the container rabbitMq port 15672.
-  * _-d_ Indicates to run the container in detached mode which means we started the container and returned to the host command prompt.
-  * If you browse to [http://localhost:8080](http://localhost:8080) you should see the RabbitMq managment page. The default user name is _guest_ and the password is _guest_.
-![alt text](demo-images/rabbitmq.png "RabbitMq")
-  * Congrats you have successfuly deployed the RabbitMq docker container.
-
 ## Create Sample App
 
 * Create a folder to store your application and Dockfile with in _ex. C:\code\blazor-doker-demo\)_
@@ -55,7 +41,7 @@
 * Scroll through the list to see if you find the template named "blazorwasm". If you don't find the _blazorwasm_ template installed run the following command to install the Blazor templates  _dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1_
 * Execute _dotnet new_ again to see a list of installed template and verify the blazor template is now instaled.
 * Type _dotnet new blazorwasm_ in the project folder your created and you should see the following output.
-![alt text](demo-images/dotnet-new-blazor.png "dotnet new blazor")  
+![alt text](demo-images/dotnet-new-blazor.png "dotnet new blazor")
 
 ## Verfiy the app runs locally
 
@@ -79,38 +65,6 @@ Congrats! You have created the blazor application, next we add our RabbitMQ mess
 ![alt text](demo-images/yay.png "Yay!")
 
 ## Add messaging to our Blazor application
-
-### First make sure your RabbitMQ container is still up and running by executing the following command
-
-    docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.RunningFor}}\t{{.Status}}"
-
-You can execute the standard _docker ps -a_ but the above command will format the output in a more readable format as seen below.
-
-![alt text](demo-images/docker-ps-a.png "docker ps -a -f")
-
-The _-a_ flag indicates we want to view all containers running or not, and as you can see our container is not running because I had to reboot my laptop.
-
-So lets start the rabbit mq container with the _docker start_ command.
-
-    docker start my-rabbit
-
-![alt text](demo-images/docker-start.png "docker start")
-
-The above command starts our container by name you can also specify the conatiner id in my case it would have been _ce4fa492fb4b_.
-
-Browse to [http://localhost:8080](http://localhost:8080) to make sure you can access the rabbitMq management dashboard.
-
-### Add the RabbitMq package reference
-
-Open our project's .csproj file with Visual Studio or VSCode then we need to add a new library\package reference to our appplication. You can do this from the commandline, csproj or the NuGet package manager.
-
-We will do it via the csproj. So in Visual Studio 2019 right-click and choose Edit Project File or in VSCode just click the csprof file to edit it. Then add `<PackageReference Include="TekHow.RabbitMq" Version="<version number>" />` to the _ItemGroup_ like show below.
-
-![alt text](demo-images/add-reference.png "Package reference")
-
-[TekHow.RabbitMq package reference](https://github.com/dynamiclynk/TekHow.RabbitMq)
-
-### Initalize RabbitMq and inject it into our application
 
 ### Add a new nav item
 
@@ -141,6 +95,109 @@ Yep the new menu is now available so now lets write the messaging code.
 
 Create a new Blazor Page under /Pages in your solution and name it _Messaging.razor_
 
-## Deploy to docker container
+### Add gRPC
+
+## Run the app in a docker container
+
+## Adding NGINX Configuration
+
+We're going to be using NGINX to serve our application so our container size is minimal.
+
+Inside our container however, as our app is a SPA (Single Page Application), we need to tell NGINX to route all requests to the _index.html_.
+
+As NGINX configuration is all opt-in it doesn't handle different mime types unless we tell it to. Also we will need to add in a mime type for wasm as this is not included in NGINXs default mime type list.
+
+In the root of the project add a new file called _nginx.conf_ and add in the following code.
+
+    events { }
+     http {
+       include mime.types;
+       types
+       {
+         application/wasm wasm;
+       }
+
+      server {
+        listen 80;
+          location / {
+            root /usr/share/nginx/html;
+            try_files $uri $uri/ /index.html =404;
+          }
+      }
+    }
+
+This is a minimal configuration which will allow our app to be served. If you want to run a production configuration then you should review [NGINX docs](https://nginx.org/en/docs/) site and review all the options you can configure.
+
+Basically we've created a simple web server listening on port 80 with files being served from /usr/share/nginx/html. The try_files configuration tells NGINX to serve the index.html whenever it can't find the requested file on disk.
+
+Above the server block we've included the default mime types _application/wasm wasm;_ as well as a custom mime type for wasm files.
+
+### Add the Dockerfile
+
+Use the contents below and add them to a new file named _Dockerfile_ without an extension in the application root.
+
+    FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+    WORKDIR /src
+    COPY BlazorWasmDocker.csproj .
+    RUN dotnet restore "BlazorWasmDocker.csproj"
+    COPY . .
+    RUN dotnet build "BlazorWasmDocker.csproj" -c Release -o /app/build
+
+    FROM build AS publish
+    RUN dotnet publish "BlazorWasmDocker.csproj" -c Release -o /app/publish
+
+    FROM nginx:alpine AS final
+    WORKDIR /usr/share/nginx/html
+    COPY --from=publish /app/publish/BlazorWasmDocker/dist .
+    COPY nginx.conf /etc/nginx/nginx.conf
+
+### First section
+
+    FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+    WORKDIR /src
+    COPY BlazorWasmDocker.csproj .
+    RUN dotnet restore "BlazorWasmDocker.csproj"
+    COPY . .
+    RUN dotnet build "BlazorWasmDocker.csproj" -c Release -o /app/build
+
+* The first block of statements is going to build our app. We're using Microsofts official .NET Core 3.1 SDK image as the base image for the build.
+
+* Next we set the WORKDIR in the container to /src and then COPY the the csproj file from our project.
+
+* Next we execute _dotnet restore_ before executing the docker COPY to copy the rest of the project files to the container.
+  
+* Finally, we build the project by executing docker RUN _dotnet build_ on our project file setting the build configuration _-c_ to Release.
+
+### Second section
+
+    FROM build AS publish
+    RUN dotnet publish "BlazorWasmDocker.csproj" -c Release -o /app/publish
+
+This section is pretty straightforward, we use the previous section as a base and then RUN the _dotnet publish_ command to publish the project inside of the container.
+
+### Last section
+
+    FROM nginx:alpine AS final
+    WORKDIR /usr/share/nginx/html
+    COPY --from=publish /app/publish/BlazorWasmDocker/dist .
+    COPY nginx.conf /etc/nginx/nginx.conf
+
+The section produces the final image.
+
+The nginx:alpine image is used as a base and starts by setting the WORKDIR to /usr/share/nginx/html.
+
+This is the directory where we'll serve our application from. The the COPY command is executed to copy over our published app from the previous publish section to the current working directory.
+
+Finally, another COPY command is executed to copy over the _nginx.conf_ we created earlier to replace the default configuration file.
+
+### Build the container
+
+Execute the following command from a command prompt or termnial and make sure you are within your project root directory.
+
+    docker build -t blazor-webassembly-with-docker .
+
+By using the _docker build_ command with the -t switch allows us to tag the image with a friendly name so we can identify it later on. The trailing period (.) instructs docker to use the current directory to locate the _Dockerfile_.
+
+The output from the build will look similiar to below.
 
 ## Test

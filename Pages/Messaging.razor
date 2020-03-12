@@ -8,7 +8,13 @@ Enter a message to send.
 <textarea @bind="CurrentValue" @bind:event="oninput" cols="40" rows="5" wrap="soft" >
 
 </textarea>
+<button>Send Message</button>
 </div>
 @code {
   private string CurrentValue { get; set; }
+
+      protected override void OnInitialized()
+      {
+      
+}
 }
