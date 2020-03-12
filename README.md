@@ -60,7 +60,7 @@ Once you browse to the URL you should see a webpage similiar to below from blazo
 
 Alternatively you can open the .csproj with VisualStudio and launch the debugger from there which should open the browser to the same WebApp url.
 
-Congrats! You have created the blazor application, next we add our RabbitMQ messaging functionality.
+Congrats! You have created the blazor application, next we add our messaging functionality.
 
 ![alt text](demo-images/yay.png "Yay!")
 
@@ -138,27 +138,27 @@ Use the contents below and add them to a new file named _Dockerfile_ without an 
 
     FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
     WORKDIR /src
-    COPY BlazorWasmDocker.csproj .
-    RUN dotnet restore "BlazorWasmDocker.csproj"
+    COPY docker7bday-demo.csproj .
+    RUN dotnet restore "docker7bday-demo.csproj"
     COPY . .
-    RUN dotnet build "BlazorWasmDocker.csproj" -c Release -o /app/build
+    RUN dotnet build "docker7bday-demo.csproj" -c Release -o /app/build
 
     FROM build AS publish
-    RUN dotnet publish "BlazorWasmDocker.csproj" -c Release -o /app/publish
+    RUN dotnet publish "docker7bday-demo.csproj" -c Release -o /app/publish
 
     FROM nginx:alpine AS final
     WORKDIR /usr/share/nginx/html
-    COPY --from=publish /app/publish/BlazorWasmDocker/dist .
+    COPY --from=publish /app/publish/docker7bday-demo/dist .
     COPY nginx.conf /etc/nginx/nginx.conf
 
 ### First section
 
     FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
     WORKDIR /src
-    COPY BlazorWasmDocker.csproj .
-    RUN dotnet restore "BlazorWasmDocker.csproj"
+    COPY docker7bday-demo.csproj .
+    RUN dotnet restore "docker7bday-demo.csproj"
     COPY . .
-    RUN dotnet build "BlazorWasmDocker.csproj" -c Release -o /app/build
+    RUN dotnet build "docker7bday-demo.csproj" -c Release -o /app/build
 
 * The first block of statements is going to build our app. We're using Microsofts official .NET Core 3.1 SDK image as the base image for the build.
 
@@ -171,7 +171,7 @@ Use the contents below and add them to a new file named _Dockerfile_ without an 
 ### Second section
 
     FROM build AS publish
-    RUN dotnet publish "BlazorWasmDocker.csproj" -c Release -o /app/publish
+    RUN dotnet publish "docker7bday-demo.csproj" -c Release -o /app/publish
 
 This section is pretty straightforward, we use the previous section as a base and then RUN the _dotnet publish_ command to publish the project inside of the container.
 
@@ -179,7 +179,7 @@ This section is pretty straightforward, we use the previous section as a base an
 
     FROM nginx:alpine AS final
     WORKDIR /usr/share/nginx/html
-    COPY --from=publish /app/publish/BlazorWasmDocker/dist .
+    COPY --from=publish /app/publish/docker7bday-demo/dist .
     COPY nginx.conf /etc/nginx/nginx.conf
 
 The section produces the final image.
@@ -199,5 +199,7 @@ Execute the following command from a command prompt or termnial and make sure yo
 By using the _docker build_ command with the -t switch allows us to tag the image with a friendly name so we can identify it later on. The trailing period (.) instructs docker to use the current directory to locate the _Dockerfile_.
 
 The output from the build will look similiar to below.
+
+[Build output](demo-images/build.txt)
 
 ## Test

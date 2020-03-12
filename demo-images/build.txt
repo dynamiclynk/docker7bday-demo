@@ -1,0 +1,94 @@
+docker build -t blazor-webassembly-with-docker .                              
+Sending build context to Docker daemon  36.33MB
+Step 1/12 : FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+3.1: Pulling from dotnet/core/sdk
+50e431f79093: Pull complete                                                                                             
+dd8c6d374ea5: Pull complete                                                                                             
+c85513200d84: Pull complete                                                                                             
+55769680e827: Pull complete                                                                                             
+053b9b7da68c: Pull complete                                                                                             
+7e81b64e966c: Pull complete                                                                                             
+c70b1f2ee510: Pull complete                                                                                             
+Digest: sha256:d476cd82cbfb96a01c1c51b78a1543b95a16ab35b17d63a6f582e301b893672f
+Status: Downloaded newer image for mcr.microsoft.com/dotnet/core/sdk:3.1
+ ---> cfc38403c6bc
+Step 2/12 : WORKDIR /src
+ ---> Running in f87851d3473b
+Removing intermediate container f87851d3473b
+ ---> c486b309e3a0
+Step 3/12 : COPY BlazorWasmDocker.csproj .
+COPY failed: stat /var/lib/docker/tmp/docker-builder907829320/BlazorWasmDocker.csproj: no such file or directory
+PS C:\users\howarc\code\docker7bday-demo> docker build -t blazor-webassembly-with-docker .                              
+Sending build context to Docker daemon  36.36MB
+Step 1/12 : FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+ ---> cfc38403c6bc
+Step 2/12 : WORKDIR /src
+ ---> Using cache
+ ---> c486b309e3a0
+Step 3/12 : COPY docker7bday-demo.csproj .
+ ---> 80a29cf007c2
+Step 4/12 : RUN dotnet restore "docker7bday-demo.csproj"
+PS C:\users\howarc\code\docker7bday-demo> docker build -t blazor-webassembly-with-docker .                              
+Sending build context to Docker daemon  36.36MB
+Step 1/12 : FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+ ---> cfc38403c6bc
+Step 2/12 : WORKDIR /src
+ ---> Using cache
+ ---> c486b309e3a0
+Step 3/12 : COPY docker7bday-demo.csproj .
+ ---> Using cache
+ ---> 80a29cf007c2
+Step 4/12 : RUN dotnet restore "docker7bday-demo.csproj"
+ ---> Running in 679a5a1fa43c
+  Restore completed in 23.13 sec for /src/docker7bday-demo.csproj.
+Removing intermediate container 679a5a1fa43c
+ ---> 9143c4c0a941
+Step 5/12 : COPY . .
+ ---> 859cce9b96b6
+Step 6/12 : RUN dotnet build "docker7bday-demo.csproj" -c Release -o /app/build
+ ---> Running in 2864d71fd2ed
+Microsoft (R) Build Engine version 16.4.0+e901037fe for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Restore completed in 219.92 ms for /src/docker7bday-demo.csproj.
+  docker7bday-demo -> /app/build/docker7bday-demo.dll
+  docker7bday-demo (Blazor output) -> /app/build/dist
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:07.86
+Removing intermediate container 2864d71fd2ed
+ ---> 989f5642431b
+Step 7/12 : FROM build AS publish
+ ---> 989f5642431b
+Step 8/12 : RUN dotnet publish "docker7bday-demo.csproj" -c Release -o /app/publish
+ ---> Running in 309b78998c24
+Microsoft (R) Build Engine version 16.4.0+e901037fe for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Restore completed in 27.51 ms for /src/docker7bday-demo.csproj.
+  docker7bday-demo -> /src/bin/Release/netstandard2.1/docker7bday-demo.dll
+  docker7bday-demo (Blazor output) -> /src/bin/Release/netstandard2.1/dist
+  docker7bday-demo -> /app/publish/
+Removing intermediate container 309b78998c24
+ ---> 88bdd0c6696c
+Step 9/12 : FROM nginx:alpine AS final
+alpine: Pulling from library/nginx
+4167d3e14976: Pull complete
+bb292c78f105: Pull complete 
+Digest: sha256:abe5ce652eb78d9c793df34453fddde12bb4d93d9fbf2c363d0992726e4d2cad
+Status: Downloaded newer image for nginx:alpine
+ ---> 377c0837328f
+Step 10/12 : WORKDIR /usr/share/nginx/html
+ ---> Running in 27f290d03256
+Removing intermediate container 27f290d03256
+ ---> 39dfe10e8527
+Step 11/12 : COPY --from=publish /app/publish/docker7bday-demo/dist .
+ ---> 6ab97f7b1520
+Step 12/12 : COPY nginx.conf /etc/nginx/nginx.conf
+ ---> 47f0fc3177d1
+Successfully built 47f0fc3177d1
+Successfully tagged blazor-webassembly-with-docker:latest
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
