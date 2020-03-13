@@ -8,7 +8,9 @@ RUN dotnet build "docker7bday-demo.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "docker7bday-demo.csproj" -c Release -o /app/publish
 
-FROM nginx:alpine AS final
+FROM nginx:latest AS final
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils dos2unix
 WORKDIR /usr/share/nginx/html
 COPY --from=publish /app/publish/docker7bday-demo/dist .
 COPY nginx.conf /etc/nginx/nginx.conf
+RUN dos2unix /etc/nginx/nginx.conf
