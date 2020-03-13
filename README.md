@@ -194,12 +194,22 @@ Finally, another COPY command is executed to copy over the _nginx.conf_ we creat
 
 Execute the following command from a command prompt or termnial and make sure you are within your project root directory.
 
-    docker build -t blazor-webassembly-with-docker .
+    docker build -t docker7bday-demo .
 
 By using the _docker build_ command with the -t switch allows us to tag the image with a friendly name so we can identify it later on. The trailing period (.) instructs docker to use the current directory to locate the _Dockerfile_.
 
 The output from the build will look similiar to below.
 
 [Build output](demo-images/build.txt)
+
+### Starting a container
+
+After the image is built proceed to start a container with this image and check that everything is functioning.
+
+    docker run -p 8080:80 docker7bday-demo
+
+This command tells Docker to start a container with the tag _docker7bday-demo_. The -p switch maps port 8080 on the host to port 80 in the container.
+
+Once you have run the command then open a browser and navigate to [http://localhost:8080](http://localhost:8080) and you should be able to load the app.
 
 ## Test
